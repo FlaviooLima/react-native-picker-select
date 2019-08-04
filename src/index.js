@@ -235,8 +235,11 @@ export default class RNPickerSelect extends PureComponent {
 
     triggerDoneCallback() {
         const { hideDoneBar, onDonePress } = this.props;
-        if (!hideDoneBar && onDonePress) {
-            onDonePress(this.state.selectedItem);
+        const { selectedItem = {} } = this.state;
+        const { value = null } = this.selectedItem;
+        
+        if (!hideDoneBar && onDonePress && value) {
+            onDonePress(value);
         }
     }
 
